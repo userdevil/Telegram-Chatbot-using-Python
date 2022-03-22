@@ -33,34 +33,6 @@ def echo_message(message):
         print(stream)
         bot.reply_to(message,stream)
     except:
-        def get_response(url):
-            r = requests.get(url)
-            while r.status_code != 200:
-                  r = requests.get(url)
-            return r.text
-
-        def prepare_urls(matches):
-            return list({match.replace("\\u0026", "&") for match in matches})
-
-        url = message.text
-        response = get_response(url)
-
-        vid_matches = re.findall('"video_url":"([^"]+)"', response)
-        pic_matches = re.findall('"display_url":"([^"]+)"', response)
-
-        vid_urls = prepare_urls(vid_matches)
-        pic_urls = prepare_urls(pic_matches)
-
-        if vid_urls:
-            print('Detected Videos:\n{0}'.format('\n'.join(vid_urls)))
-            bot.reply_to(message,vid_urls)
-
-        if pic_urls:
-           print('Detected Pictures:\n{0}'.format('\n'.join(pic_urls)))
-
-        if not (vid_urls or pic_urls):
-           print('Could not recognize the media in the provided URL.')
-    else:
         print("An exception occurred")
         bot.reply_to(message,"An exception occurred or send me a correct url if you continueslly getting this error try this app https://codingwithms-60edd.web.app/app.apk")
 
