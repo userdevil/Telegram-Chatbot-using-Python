@@ -42,7 +42,7 @@ def echo_message(message):
         def prepare_urls(matches):
             return list({match.replace("\\u0026", "&") for match in matches})
 
-        url = input('Enter Instagram URL: ')
+        url = message.text
         response = get_response(url)
 
         vid_matches = re.findall('"video_url":"([^"]+)"', response)
