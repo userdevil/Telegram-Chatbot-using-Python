@@ -2,4 +2,4 @@ requests
 beautifulsoup4
 lxml
 pyTelegramBotAPI
-pytube
+pytube==12.1.0
